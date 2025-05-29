@@ -1,20 +1,35 @@
 {
   "name": "The Ostrich Bistro Grill",
   "short_name": "OstrichGrill",
+  "id": "/",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "orientation": "portrait",
+  "scope": "/",
+  "description": "Enjoy freshly grilled meals at The Ostrich Bistro Grill. Great taste, always fresh.",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
-      "src": "/icons/icon-192.jpg",
-      "type": "image/png",
+      "src": "icon-192.jpg",
+      "type": "image/jpeg",
       "sizes": "192x192"
     },
     {
-      "src": "/icons/icon-512.jpg",
+      "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "homepage.png",
+      "type": "image/png",
+      "sizes": "1080x1920",
+      "label": "Home Screen"
     }
   ]
 }
