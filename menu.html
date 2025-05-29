@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="OstrichGrill">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <title>The Ostrich Bistro & Grill | Gourmet Dining Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B4513;
+            --secondary: #F5DEB3;
+            --accent: #A0522D;
+            --light: #FFF8DC;
+            --dark: #2F4F4F;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('photos/restaurant-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            color: var(--secondary);
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-size: larger;
+            font-weight: bolder;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .menu-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-header p {
+            color: var(--dark);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .menu-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px dashed var(--accent);
+        }
+        
+        .category-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-right: 2rem;
+        }
+        
+        .category-header p {
+            color: var(--accent);
+            font-style: italic;
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.05);
+        }
+        
+        .menu-item-details {
+            padding: 1.5rem;
+        }
+        
+        .menu-item-details h4 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .menu-item-details p {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .menu-item-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .option {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .option p:first-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .option p:last-child {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .dietary-icons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .dietary-icon {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 50%;
+                height: auto;
+                left: 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 50%;
+                display: none;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#signature-dishes">Signature Dishes</a></li>
+                <li><a href="#breakfast">Breakfast</a></li>
+                <li><a href="#main-courses">Main Courses</a></li>
+                <li><a href="#beverages">Beverages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="menu-section" id="signature-dishes">
+        <div class="section-header">
+            <h2>Signature Dishes</h2>
+            <p>Our chef's special creations that define The Ostrich Bistro & Grill experience</p>
+        </div>
+        
+        <div class="menu-category">
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/goat meet.jpeg" alt="Premium Goat Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Premium Goat Selection</h4>
+                        <p>Tender goat prepared to perfection with your choice of preparation style</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>1KG</p>
+                                <p>1200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/2KG</p>
+                                <p>600 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/4KG</p>
+                                <p>300 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">GF</span>
+                            <span class="dietary-icon">DF</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/chicken.jpeg" alt="Kienyeji Chicken">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Farm-to-Table Kienyeji Chicken</h4>
+                        <p>Free-range chicken raised naturally for superior flavor and texture</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Ostrich Platter</p>
+                                <p>2000 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Full Chicken</p>
+                                <p>2000 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Half Chicken</p>
+                                <p>1000 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">OR</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="menu-section" id="breakfast">
+        <div class="section-header">
+            <h2>Breakfast Selection</h2>
+            <p>Start your day right with our freshly prepared breakfast options</p>
+        </div>
+        
+        <div class="menu-category">
+            <div class="category-header">
+                <h3>Morning Classics</h3>
+                <p>Served daily from 6:30am to 11:00am</p>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/tea.jpeg" alt="Breakfast Beverages">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Hot Beverages</h4>
+                        <p>Freshly brewed to perfection</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Tea/Coffee</p>
+                                <p>200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Hot Chocolate</p>
+                                <p>250 KES</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/morning meal.jpg" alt="Breakfast Extras">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Breakfast Add-ons</h4>
+                        <p>Perfect accompaniments to your morning meal</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Pancakes</p>
+                                <p>100 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Toast</p>
+                                <p>50 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Sausages</p>
+                                <p>50 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">V</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/eggs.png" alt="Egg Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Egg Preparations</h4>
+                        <p>Farm-fresh eggs cooked to your liking</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Fried (2)</p>
+                                <p>150 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Scrambled (2)</p>
+                                <p>150 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Boiled (2)</p>
+                                <p>150 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">GF</span>
+                            <span class="dietary-icon">V</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="menu-section" id="main-courses">
+        <div class="section-header">
+            <h2>Main Courses</h2>
+            <p>Heartier dishes featuring the finest local ingredients</p>
+        </div>
+        
+        <div class="menu-category">
+            <div class="category-header">
+                <h3>Meat Selection</h3>
+                <p>All meat dishes served with your choice of ugali, rice, or chapati</p>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/beef.jpeg" alt="Beef Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Premium Beef Cuts</h4>
+                        <p>Choose from dry fry, watery, roasted, or boiled preparation</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>1KG</p>
+                                <p>700 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/2KG</p>
+                                <p>350 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/4KG</p>
+                                <p>200 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">GF</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/pork.jpg" alt="Pork Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Succulent Pork</h4>
+                        <p>Available as dry fry, watery, or roasted</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>1KG</p>
+                                <p>1100 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/2KG</p>
+                                <p>600 KES</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/chicken.jpeg" alt="Capon Chicken">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Capon Chicken</h4>
+                        <p>Premium chicken prepared your way</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Full</p>
+                                <p>1400 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/2</p>
+                                <p>700 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>1/4</p>
+                                <p>350 KES</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <div class="category-header">
+                <h3>Seafood & Vegetarian</h3>
+                <p>Lighter options full of flavor</p>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/fish.png" alt="Fish Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Fresh Fish</h4>
+                        <p>Locally sourced fish prepared to perfection</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Large</p>
+                                <p>800 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Medium</p>
+                                <p>650 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Economy</p>
+                                <p>300 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">GF</span>
+                            <span class="dietary-icon">DF</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/veg salad.jpeg" alt="Vegetable Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Farm Fresh Vegetables</h4>
+                        <p>Seasonal vegetables prepared with authentic flavors</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Sukuma Wiki</p>
+                                <p>80 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Spinach</p>
+                                <p>80 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Mixed Veg</p>
+                                <p>80 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">V</span>
+                            <span class="dietary-icon">VE</span>
+                            <span class="dietary-icon">GF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="menu-category">
+            <div class="category-header">
+                <h3>Accompaniments</h3>
+                <p>Perfect complements to your main dish</p>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/ugali rice chapati.png" alt="Side Dishes">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Traditional Sides</h4>
+                        <p>Authentic Kenyan accompaniments</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Ugali</p>
+                                <p>100 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Rice</p>
+                                <p>100 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Chapati</p>
+                                <p>100 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">V</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/mukomo pilau.jpg" alt="Specialty Sides">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Specialty Sides</h4>
+                        <p>Unique accompaniments with a twist</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Mukimo</p>
+                                <p>200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Pilau</p>
+                                <p>200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Dawa</p>
+                                <p>250 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">GF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="menu-section" id="beverages">
+        <div class="section-header">
+            <h2>Beverages</h2>
+            <p>Refreshments to complement your meal</p>
+        </div>
+        
+        <div class="menu-category">
+            <div class="category-header">
+                <h3>Fresh Juices</h3>
+                <p>Made daily from seasonal fruits</p>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/juice.jpeg" alt="Fresh Juices">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Fruit Juices</h4>
+                        <p>Cold-pressed and full of vitamins</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Mango</p>
+                                <p>200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Passion</p>
+                                <p>200 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Pineapple</p>
+                                <p>200 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">V</span>
+                            <span class="dietary-icon">VE</span>
+                            <span class="dietary-icon">GF</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="photos/drinks.jpeg" alt="Other Beverages">
+                    </div>
+                    <div class="menu-item-details">
+                        <h4>Other Refreshments</h4>
+                        <p>Cooling and refreshing options</p>
+                        <div class="menu-item-options">
+                            <div class="option">
+                                <p>Mineral Water</p>
+                                <p>50 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Lemonade</p>
+                                <p>70 KES</p>
+                            </div>
+                            <div class="option">
+                                <p>Smoothie</p>
+                                <p>200 KES</p>
+                            </div>
+                        </div>
+                        <div class="dietary-icons">
+                            <span class="dietary-icon">V</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="logo footer-logo">
+                    <img src="photos/ostrich-icon.png" alt="The Ostrich Bistro & Grill Logo" style="width: 60px; height: 60px;">
+                    <h4>The Ostrich Bistro & Grill</h4>
+                </div>
+                <p>Experience authentic Kenyan flavors with a modern twist at our premier dining establishment in Laare.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/The-Ostrich-Bistro-and-Grill-Maili-Tatu-1407064046072729/?ref=page_internal" class="social-link" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/" class="social-link" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.bing.com/ck/a?!&&p=55b99b3a2141def4JmltdHM9MTcwNzAwNDgwMCZpZ3VpZD0yN2ExZjg3Yi0zZGE2LTYyMDktMjk4OC1lYmU1M2NjNDYzZGMmaW5zaWQ9NTE3NQ&ptn=3&ver=2&hsh=3&fclid=27a1f87b-3da6-6209-2988-ebe53cc463dc&psq=bistro+and+grill+nyagah+linked+in&u=a1aHR0cHM6Ly9rZS5saW5rZWRpbi5jb20vaW4vbmljaG9sYXMtbnlhZ2FoLTc2MTc3MzI0YQ&ntb=1" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtu.be/j2OjZmF7GXQ?si=nLMYI-6mlWl6A0uw" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#signature-dishes">Menu</a></li>
+                    <li><a href="room-booking.html">Reservations</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <p>+254 728 568 050</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <p>bistro&grill@gmail.com</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <p>Along Laare-Maili Tatu Road<br>At Maili Tatu</p>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Opening Hours</h4>
+                <p>Monday - Friday: 6:30am - 10:00pm</p>
+                <p>Saturday - Sunday: 7:00am - 11:00pm</p>
+                <p>Holidays: 8:00am - 10:00pm</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 The Ostrich Bistro & Grill. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(err => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+  });
+}
+
+    </script>
+</body>
+</html>
