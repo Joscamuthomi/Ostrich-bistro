@@ -1,18 +1,21 @@
 {
   "name": "The Ostrich Bistro Grill",
   "short_name": "OstrichGrill",
-  "start_url": "/Ostrich-bistro/",  // ✅ Fixes 404 issue
+  "description": "A premium grill experience with exotic ostrich dishes.",  // ✅ Added
+  "scope": "/Ostrich-bistro/",  // ✅ Added
+  "start_url": "/Ostrich-bistro/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "orientation": "portrait",  // ✅ Added
   "icons": [
     {
-      "src": "/Ostrich-bistro/icons/icon-192.png",  // ✅ Ensure correct path
+      "src": "/Ostrich-bistro/icons/icon-192.png",  // ✅ Absolute path
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/Ostrich-bistro/icons/icon-512.png",  // ✅ Ensure correct path
+      "src": "/Ostrich-bistro/icons/icon-512.png",  // ✅ Absolute path
       "type": "image/png",
       "sizes": "512x512"
     }
