@@ -1,11 +1,9 @@
 const CACHE_NAME = 'ostrich-grill-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/menu.html',
-  '/booking.html',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/Ostrich-bistro/',
+  '/Ostrich-bistro/index.html',
+  '/Ostrich-bistro/menu.html',
+  '/Ostrich-bistro/icons/icon-192.png',
 ];
 
 self.addEventListener('install', event => {
