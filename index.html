@@ -2331,6 +2331,11 @@
                     }
                 });
             });
+            if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/Ostrich-bistro/sw.js', { 
+    scope: '/Ostrich-bistro/' 
+  });
+}
 
             // Form Submission
             const forms = document.querySelectorAll('form');
